@@ -1,6 +1,26 @@
 ## ToTheRoot
 
-ToTheRoot is a local penetration testing framework designed for lab and CTF-style assessments. It combines network scanning, attack-surface analysis, a lightweight rule engine, and optional local LLM support for richer reporting.
+Autonomous AI-assisted penetration testing framework.
+Built on CPTS methodology. Runs fully offline. No cloud APIs.
+
+ToTheRoot combines network scanning, attack-surface analysis, and a local LLM reasoning layer to automate the recon-to-exploitation loop — the way a senior analyst thinks through it
+
+## How it works
+
+Target IP/Domain
+      |
+   scanner.py         Nmap scan (-sC -sV) with interactive mode
+      |
+  nmap_parser.py      Parses output into structured JSON
+      |
+    rules.py          Maps open ports and services to attack vectors
+      |
+ rag_suggestions.py   Queries local ChromaDB RAG (seeded with CPTS methodology)
+      |
+     llm.py           Ollama (Llama 3.1) generates analysis and next-step guidance
+      |
+    cli.py            Orchestrates the full pipeline end to end
+
 
 ## What's included
 - `cli.py` — orchestrates the full scan and analysis pipeline.
@@ -12,11 +32,6 @@ ToTheRoot is a local penetration testing framework designed for lab and CTF-styl
 - `ingest_notes.py` — ingest personal notes into a local ChromaDB store.
 - `llm.py` — local Ollama wrapper for generating analysis output.
 
-## Safe public upload
-This repository is configured to keep sensitive or lab-specific files out of the public repo.
-- `cap_agent.py` is intentionally excluded and should not be pushed.
-- `scans/`, `__pycache__/`, `*.env`, and local database files are ignored.
-- No real cloud API keys or private SSH credentials are included.
 
 ## Quick start
 1. Create a Python virtual environment:
@@ -41,7 +56,11 @@ python cli.py --target <target-ip-or-domain>
 ## Notes
 - This project is intended for authorized and educational use only.
 - Do not scan targets without permission.
-- `cap_agent.py` and any generated reports should remain local and should not be uploaded to the public repo.
+
+## Built for
+Lab environments, CTF assessments, and CPTS/OSCP preparation.
+Only run against targets you have explicit authorization to test.
+
 
 ## Requirements
 - Install dependencies with `pip install -r requirements.txt`
@@ -51,8 +70,7 @@ python cli.py --target <target-ip-or-domain>
 This project is released under the MIT License. See `LICENSE` for details.
 
 ## Author
-Parveen Rawat — https://github.com/Parveen-Rawat
+Parveen Rawat — [Portfolio](https://parveen-rawat.github.io)
 
 ---
 
-If you prefer merging both README versions, tell me and I will craft a combined header and project summary.
