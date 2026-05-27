@@ -26,7 +26,7 @@ python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-2. Install dependencies (if you add a requirements file):
+2. Install dependencies:
 
 ```powershell
 pip install -r requirements.txt
@@ -42,6 +42,13 @@ python cli.py --target <target-ip-or-domain>
 - This project is intended for authorized and educational use only.
 - Do not scan targets without permission.
 - `cap_agent.py` and any generated reports should remain local and should not be uploaded to the public repo.
+
+## Requirements
+- Install dependencies with `pip install -r requirements.txt`
+- Ollama must be installed separately and available via the `ollama` CLI if you use LLM features.
+
+## License
+This project is released under the MIT License. See `LICENSE` for details.
 
 ## Author
 Parveen Rawat — https://github.com/Parveen-Rawat
