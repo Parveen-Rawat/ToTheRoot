@@ -1,33 +1,51 @@
-# ToTheRoot — Autonomous AI Pentesting Framework
+## ToTheRoot
 
-An autonomous penetration testing framework that uses local LLMs 
-via MCP (Model Context Protocol) to orchestrate offensive security 
-tools end-to-end — without per-step human input.
+ToTheRoot is a local penetration testing framework designed for lab and CTF-style assessments. It combines network scanning, attack-surface analysis, a lightweight rule engine, and optional local LLM support for richer reporting.
 
-## What it does
-- Plans and executes recon, exploitation, and post-exploitation
-- Chains Nmap, Gobuster, SQLmap, and custom scripts automatically
-- Uses Ollama for offline local LLM inference
-- CPTS-grade methodology embedded as inline LLM context
+## What's included
+- `cli.py` — orchestrates the full scan and analysis pipeline.
+- `scanner.py` — interactive nmap scan helper.
+- `nmap_parser.py` — parses nmap text output into structured JSON.
+- `rules.py` — maps common services and open ports to attack vectors.
+- `rag_suggestions.py` — integrates local RAG knowledge for CPTS-style guidance.
+- `query_rag.py` — ask the local knowledge base questions.
+- `ingest_notes.py` — ingest personal notes into a local ChromaDB store.
+- `llm.py` — local Ollama wrapper for generating analysis output.
 
-## How it works
-1. Provide a target
-2. LLM plans the attack chain
-3. Tools execute autonomously
-4. Results fed back to LLM for next decision
-5. Repeat until rooted
+## Safe public upload
+This repository is configured to keep sensitive or lab-specific files out of the public repo.
+- `cap_agent.py` is intentionally excluded and should not be pushed.
+- `scans/`, `__pycache__/`, `*.env`, and local database files are ignored.
+- No real cloud API keys or private SSH credentials are included.
 
-## Stack
-Python · Ollama · MCP · Local LLM
+## Quick start
+1. Create a Python virtual environment:
 
-## Status
-Active development — college project under Prof. Manisha,
-Dronacharya College of Engineering
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
 
-## Disclaimer
-For authorized penetration testing and educational purposes only.
-Never use against systems you don't have explicit permission to test.
+2. Install dependencies (if you add a requirements file):
+
+```powershell
+pip install -r requirements.txt
+```
+
+3. Run the CLI on an authorized lab target:
+
+```powershell
+python cli.py --target <target-ip-or-domain>
+```
+
+## Notes
+- This project is intended for authorized and educational use only.
+- Do not scan targets without permission.
+- `cap_agent.py` and any generated reports should remain local and should not be uploaded to the public repo.
 
 ## Author
-Parveen Rawat (Sh2d0w)
-github.com/Parveen-Rawat
+Parveen Rawat — https://github.com/Parveen-Rawat
+
+---
+
+If you prefer merging both README versions, tell me and I will craft a combined header and project summary.

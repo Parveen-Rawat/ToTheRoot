@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration
+*.env
+.env
+
+# Local scan artifacts and reports
+scans/
+cap_pwn_report.md
+
+# Local database
+totheroot_db/
+*.db
+
+# Exclude the local agent simulation file
+cap_agent.py
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
